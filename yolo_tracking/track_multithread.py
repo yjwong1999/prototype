@@ -346,7 +346,7 @@ def on_predict_start(predictor, persist=False):
 
 
 @torch.no_grad()
-def run(args):
+def run(args, source, geofencing):
 
     yolo = YOLO(
         args.yolo_model if 'yolov8' in str(args.yolo_model) else 'yolov8n.pt',
