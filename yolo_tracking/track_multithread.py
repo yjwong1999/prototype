@@ -523,5 +523,22 @@ if __name__ == "__main__":
     else:
         geofencings = [None] * len(sources)
 
+    # loop all source
+    for stream_idx, (source, geofencing) in enumerate(zip(sources, geofencings)):
+        # valid source formats
+        valids = []
+        valids.append(source.endswith('.mp4'))
+        valids.append(source.startswith('rtsp'))
+        valids.append(source.startswith('http://www.youtube.com'))
+        
+        if True in valids:
+            pass
+        elif source.rstrip() == '':
+            print('please prevent empty lines in source.streams')
+            continue
+        else:
+            raise NotImplementedError
+        
+
     # run
     run(opt)
