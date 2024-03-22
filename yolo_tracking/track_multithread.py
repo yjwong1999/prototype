@@ -496,6 +496,8 @@ def parse_opt():
                         help='print results per frame')
     parser.add_argument('--vid_stride', default=1, type=int,
                         help='video frame-rate stride')
+    parser.add_argument('--geofencing', action='store_true',
+                        help='if flagged, activate geofencing')
                         
     opt = parser.parse_args()
     return opt
