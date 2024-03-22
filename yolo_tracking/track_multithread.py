@@ -538,7 +538,7 @@ if __name__ == "__main__":
             continue
         else:
             raise NotImplementedError
-        
 
-    # run
-    run(opt)
+        # thread
+        thread = threading.Thread(target=run, args=(opt,))
+        threads.append(thread)
