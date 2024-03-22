@@ -517,5 +517,11 @@ if __name__ == "__main__":
         with open("geofencing.streams","r") as f:
             geofencings = f.readlines()
         geofencings = [item.strip("\n") for item in geofencings]    
-        
+
+            # make sure the geofencing ROI are correct
+        assert len(sources) == len(geofencings), 'Please provide the corresponding geofencing ROI for each video streaming source'
+    else:
+        geofencings = [None] * len(sources)
+
+    # run
     run(opt)
