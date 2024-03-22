@@ -453,8 +453,6 @@ def parse_opt():
                         help='reid model path')
     parser.add_argument('--tracking-method', type=str, default='deepocsort',
                         help='deepocsort, botsort, strongsort, ocsort, bytetrack')
-    parser.add_argument('--source', type=str, default='0',
-                        help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640],
                         help='inference size h,w')
     parser.add_argument('--conf', type=float, default=0.5,
@@ -498,8 +496,6 @@ def parse_opt():
                         help='print results per frame')
     parser.add_argument('--vid_stride', default=1, type=int,
                         help='video frame-rate stride')
-    parser.add_argument('--roi-xyxys', type=str, default=None,
-                        help='x1y1x2y2 of RoI (in range 0 to 1), i.e.: [0.3,0.5,0.3,0.5] OR [0.3,0.5,0.3,0.5][0, 1, 0.5, 0.5]')
                         
     opt = parser.parse_args()
     return opt
