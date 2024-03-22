@@ -540,5 +540,5 @@ if __name__ == "__main__":
             raise NotImplementedError
 
         # thread
-        thread = threading.Thread(target=run, args=(opt,))
+        thread = threading.Thread(target=run, args=(opt, source, geofencing))
         threads.append(thread)
