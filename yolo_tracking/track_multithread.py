@@ -504,5 +504,11 @@ def parse_opt():
 
 
 if __name__ == "__main__":
+    # parse arguments
     opt = parse_opt()
+
+    # read source.streams 
+    with open("source.streams","r") as f:
+        sources = f.readlines()
+    sources = [item.strip("\n") for item in sources]    
     run(opt)
