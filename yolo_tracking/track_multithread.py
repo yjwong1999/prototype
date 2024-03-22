@@ -523,6 +523,22 @@ if __name__ == "__main__":
     else:
         geofencings = [None] * len(sources)
 
+    # try if drive utility function is working
+    # before multithreading
+    # if opt.geofencing:
+    #     try:
+    #         from counter import Counter
+    #         counter = Counter(0,0,0,0,0)    # init a dummy counter
+    #         counter.drive_handler.post()    # try posting smtg to see if API working
+    #         del counter                     # delete the dummy counter
+    #     except Exception as e:
+    #         print(e)
+    #         import time
+    #         time.sleep(3)
+
+    # define list to store all threads
+    threads  = []
+    
     # loop all source
     for stream_idx, (source, geofencing) in enumerate(zip(sources, geofencings)):
         # valid source formats
