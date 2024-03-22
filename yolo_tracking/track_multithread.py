@@ -558,3 +558,11 @@ if __name__ == "__main__":
         # thread
         thread = threading.Thread(target=run, args=(opt, source, geofencing))
         threads.append(thread)
+
+    # Start all threads
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
