@@ -511,4 +511,11 @@ if __name__ == "__main__":
     with open("source.streams","r") as f:
         sources = f.readlines()
     sources = [item.strip("\n") for item in sources]    
+
+    # read geofencing.streams 
+    if opt.geofencing:
+        with open("geofencing.streams","r") as f:
+            geofencings = f.readlines()
+        geofencings = [item.strip("\n") for item in geofencings]    
+        
     run(opt)
