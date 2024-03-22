@@ -396,15 +396,14 @@ def run(args):
     # GEOFENCING + Counter
     ##############################
     yolo.predictor.counters = None
-    if args.roi_xyxys is not None:
+    if args.geofencing is not None:
         yolo.predictor.counters = []
-        roi_xyxys = args.roi_xyxys.split('][')
-        for i in range(len(roi_xyxys)):
-            xyxy = roi_xyxys[i].replace('[', '').replace(']', '')
-            xyxy = xyxy.split(',')
-            xyxy = [float(item) for item in xyxy]
-            x1, y1, x2, y2  = xyxy
-            yolo.predictor.counters.append(Counter(x1, y1, x2, y2, i+1))
+
+        xyxy = geofencing
+        xyxy = xyxy.split(',')
+        xyxy = [float(item) for item in xyxy]
+        x1, y1, x2, y2  = xyxy
+        yolo.predictor.counters.append(Counter(x1, y1, x2, y2, opt.stream_idx))
             
     import types
     yolo.predictor.write_results = types.MethodType(write_results, yolo.predictor)
@@ -561,6 +560,7 @@ if __name__ == "__main__":
         # overide opt
         opt.source = source
         opt.geofencing= geofencing
+        opt.stream_idx = stream_idx
         
         # thread
         thread = threading.Thread(target=run, args=(opt, ))
