@@ -349,7 +349,7 @@ def on_predict_start(predictor, persist=False):
 
 
 @torch.no_grad()
-def run(args, source, geofencing):
+def run(args):
 
     yolo = YOLO(
         args.yolo_model if 'yolov8' in str(args.yolo_model) else 'yolov8n.pt',
@@ -558,8 +558,12 @@ if __name__ == "__main__":
         else:
             raise NotImplementedError
 
+        # overide opt
+        opt.source = source
+        opt.geofencing= geofencing
+        
         # thread
-        thread = threading.Thread(target=run, args=(opt, source, geofencing))
+        thread = threading.Thread(target=run, args=(opt, ))
         threads.append(thread)
 
     # Start all threads
